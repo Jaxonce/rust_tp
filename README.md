@@ -89,3 +89,77 @@ fn main() {
     println!("Fin du programme");
 }
 ```
+
+### Loop
+Boucle infinie jusqu'à `break` :
+```rust
+fn main() {
+    let mut compteur = 0;
+    loop {
+        println!("Compteur: {}", compteur);
+        compteur += 1;
+        if compteur == 3 {
+            break; // sortie de boucle
+        }
+    }
+}
+```
+
+### Struct et impl
+Structures + méthodes associées :
+```rust
+struct Personne {
+    nom: String,
+    age: u32,
+}
+
+impl Personne {
+    fn nouveau(nom: String, age: u32) -> Self {
+        Personne { nom, age }
+    }
+    
+    fn afficher(&self) {  // emprunt immuable (lecture seule)
+        println!("Nom: {}", self.nom);
+    }
+    
+    fn vieillir(&mut self) {  // emprunt mutable (peu etre modifié)
+        self.age += 1;
+    }
+}
+
+fn main() {
+    let mut p = Personne::nouveau("Kevin".to_string(), 25);
+    p.afficher();
+    p.vieillir();
+}
+```
+
+### Fonctions associées (&self, &mut self)
+- `&self` : lecture seule (emprunt immuable)
+- `&mut self` : modification possible (emprunt mutable)
+- `self` : prend possession (déplace la valeur)
+
+### Le underscore (_)
+Ignore une valeur :
+```rust
+let _ = fonction_qui_retourne_quelque_chose(); // ignore le retour
+let (_premier, second) = (1, 2); // ignore premier
+```
+
+### Gestion des erreurs
+`match` pour gérer `Result` et `Option` :
+```rust
+fn main() {
+    let input = "42";
+    let nombre: i32 = match input.parse() {
+        Ok(n) => n,           // succès
+        Err(_) => {           // erreur
+            println!("Erreur de parsing");
+            return;
+        }
+    };
+    
+    // Ou avec expect() pour paniquer en cas d'erreur
+    let nombre2: i32 = input.parse().expect("Nombre invalide");
+}
+```

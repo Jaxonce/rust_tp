@@ -87,7 +87,7 @@ fn main() {
 
          let mut choix = String::new();
          io::stdin().read_line(&mut choix).expect("Attention erreur de lecture");
-         
+
          let choix:usize = match choix.trim().parse(){
             Ok(num) => num,
             Err(_)=> {
@@ -104,12 +104,142 @@ fn main() {
          }
 
 
+
+      // Les tableaux  
+      let tab:[i32;4] = [11,23,19,19];
+      let tab2:[i32;4] = [11,23,19,19]; 
+      // pour éviter le warning d'une variable non utilisée on rajoute le _ devant la variable
+
+      // parcourir le tableau 
+        for i in 0..tab.len(){
+            println!("le tableau tab {}",tab[i]);
+        }
+
+        for &elt in &tab{
+            println!("l'element est {}",elt);
+        }
+        // &elt => itérer sur des références aux elements du tableau 
+        //&tab => on passe une référence au tableau pour éviter de prendre la possession du 
+        // tableau entier
+
+
+         for &elt in &tab2{
+            println!("l'element est {}",elt);
+        }
+println!("**********loop***********");
+        // les loop
+        let mut compteur =0;
+        loop {
+            println!(" Compteur: {}",compteur);
+            compteur+=1;
+            if compteur == 3{
+                break;  // on sort de la boucle quand compteur atteint 3 
+            }
+        }
+
+println!("**********While***********");
+   
+      let mut compteur2 = 0;
+      while compteur2 <4{
+        println!("Compteur 2 = {}",compteur2);
+        compteur2 +=1;
+      };
+
+
+println!("**********Struct***********");
+
+   struct Salarie{
+    nom: String,
+    ville: String,
+    age: u32
+   }
+
+   // usage struct => on crée une instance de la structure 
+     let kevin = Salarie{
+        nom:String::from("Kevin"),
+        ville:String::from("Lyon"),
+        age:25
+     };
+
+   // pour accéder aux attributs de la structure 
+   println!("Nom :{}, Ville:{}, Age:{}", kevin.nom, kevin.ville, kevin.age);
+
+
+
+//  Nb  en java   Class  objet = new Classe () 
+// Nb  en js  let livre = new Array()    
+// Objet.methode()  ou Objet.attribut  
+
+
+//   Match 
+
+  let nombre = 5 ; 
+
+  match nombre {
+         1 => println!("Un"),
+         2 => println!("deux"),
+         3 => println!("trois"),
+         4 => println!("quatre"),
+         5 => println!("cinq"),
+          _=>println!("Autre nombre "), // cas par défaut 
+
+  }
+
+
+
+  struct Personne{
+        nom:String
+      }
+
+//  Fonctions associés ( impl ) pour des structures ( struct )
+  impl Personne {
+    fn afficher(&self){  // emprunt immuable  => ne modifie rien 
+        println!("La personne suivante {} est convoquée ",self.nom);
+    }
+  }
+
+  let personne = Personne{
+    nom:"Alexandre".to_string()
+  };
+
+  personne.afficher();
+
+
+   // Exemple  compteur struct
+
+   struct Compteur {
+     value :u32
+   }
+
+
+   impl Compteur {
+       fn afficher(&self){
+        println!("la valeur actuelle :{}",self.value);
+       }
+
+       fn incrementer (&mut self){
+        self.value +=1;
+       }
+
+         fn deplacer (self){
+          println!("Dépalacé : {}",self.value);  // self deplacé ici, plus accessible 
+       }
+
+   }
+
+
+      let mut compteur = Compteur {value:0};
+       compteur.afficher();
+       compteur.incrementer();
+       compteur.deplacer();
+
+
 }
+
+// fin main
 
    fn addition(n1:i32, n2:i32) -> i32{   //  -> i32 retourne un entier 
        n1+n2
    }
 
    fn say_hello( nom :&str){
-    println!("Bonjour, {}", nom);
-   }

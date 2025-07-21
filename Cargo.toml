@@ -7,4 +7,8 @@ edition = "2024"
 name = "tp1"
 path = "src/tp1.rs"
 
+[[bin]]
+name = "tp2"
+path = "src/tp2.rs"
+
 [dependencies]
