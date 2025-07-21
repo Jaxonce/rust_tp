@@ -74,7 +74,6 @@ fn main() {
 lire l'entrée de l'utilisateur => bibliothèque standard :
 ```rust
 use std::io;
-```
 
 fn main() {
     let mut input = String::new(); // Mut : variable mutable 
@@ -89,3 +88,4 @@ fn main() {
     }
     println!("Fin du programme");
 }
+```
