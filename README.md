@@ -37,7 +37,7 @@ y += 5; // modification de la variable mutable
 
 ### Fonctions
 fonctions définies avec le mot-clé `fn`. Voici un exemple :
-rust
+```rust
 fn ajouter(a: i32, b: i32) -> i32 {
     a + b
 }
@@ -46,6 +46,7 @@ fn main() {
     let resultat = ajouter(5, 10);
     println!("Le résultat est : {}", resultat);
 }
+```
 ### IF et boucles
 expressions conditionnelles et boucles.
 ```rust
