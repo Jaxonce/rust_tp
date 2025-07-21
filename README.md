@@ -1,4 +1,3 @@
-md 
 # Introduction à Rust
 
 ## Liens utiles
