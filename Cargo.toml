@@ -11,4 +11,9 @@ path = "src/tp1.rs"
 name = "tp2"
 path = "src/tp2.rs"
 
+[[bin]]
+name = "tp3"
+path = "src/tp_gestionnaire_fichiers.rs"
+
 [dependencies]
+chrono = "0.4"
